@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:timebox/theme/theme_constants.dart';
 
 import 'layouts/default.dart';
-import 'providers/counter_provider.dart';
+import 'providers/user_provider.dart';
 import 'providers/theme_provider.dart';
-import 'providers/shopping_cart_provider.dart';
+import 'providers/box_provider.dart';
 import 'screens/devices.dart';
 import 'screens/profile.dart';
 

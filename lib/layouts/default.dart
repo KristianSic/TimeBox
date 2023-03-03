@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import '../screens/devices.dart';
 import '../screens/home.dart';
 import '../screens/profile.dart';
@@ -25,21 +26,23 @@ class _DefaultState extends State<Default> {
   static List<ListItem> pages = [
     ListItem(
       label: 'home',
-      icon: Icons.check_box_outline_blank_rounded,
+      icon: Icons.home_filled,
     ),
     ListItem(
-      label: 'chat',
-      icon: Icons.add_box,
+      label: 'devices',
+      icon: Icons.dashboard_customize_sharp,
     ),
     ListItem(
-      label: 'camera',
-      icon: Icons.account_box,
+      label: 'profile',
+      icon: Icons.person,
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBody: false,
+        backgroundColor: const Color(0xff303030),
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: const Color(0xFF5A5A5A),
@@ -61,28 +64,30 @@ class _DefaultState extends State<Default> {
             Profile(),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: selectedIndex, //New
-          onTap: onItemTapped, //New
-          backgroundColor: Colors.black,
-          selectedFontSize: 20,
-          unselectedItemColor: Colors.white,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          selectedIconTheme:
-              const IconThemeData(color: Colors.amberAccent, size: 40),
-          selectedItemColor: Colors.amberAccent,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-          elevation: 0,
-          items: pages.map((page) {
-            return BottomNavigationBarItem(
-                icon: Icon(
-                  page.icon,
-                  size: 30,
-                ),
-                label: page.label);
-          }).toList(),
-        ));
+        bottomNavigationBar: Container(
+            margin:
+                const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 10),
+            width: 100,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              child: Container(
+                color: const Color(0xffB5B5B5),
+                child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: GNav(
+                        tabBackgroundColor: Colors.white,
+                        selectedIndex: selectedIndex,
+                        tabBorderRadius: 5,
+                        onTabChange: onItemTapped,
+                        //backgroundColor: const Color(0xFFB5B5B5),
+                        padding:
+                            const EdgeInsets.all(5), // navigation bar padding
+                        tabs: pages.map((page) {
+                          return GButton(icon: page.icon);
+                        }).toList())),
+              ),
+            ) // This trailing comma makes auto-formatting nicer for build methods.
+            ));
   }
 
   void onItemTapped(int index) {
