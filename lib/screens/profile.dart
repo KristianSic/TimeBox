@@ -63,7 +63,7 @@ class User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Name: ${context.watch<ProfileState>().name}',
+    return Text(context.watch<ProfileState>().name,
         key: const Key('counterState'),
         style: Theme.of(context).textTheme.headlineMedium);
   }

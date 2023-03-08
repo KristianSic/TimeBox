@@ -3,6 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../screens/devices.dart';
 import '../screens/home.dart';
 import '../screens/profile.dart';
+import '../screens/settings.dart';
 
 class Default extends StatefulWidget {
   const Default({Key? key}) : super(key: key);
@@ -36,6 +37,10 @@ class _DefaultState extends State<Default> {
       label: 'profile',
       icon: Icons.person,
     ),
+    ListItem(
+      label: 'settings',
+      icon: Icons.settings,
+    ),
   ];
 
   @override
@@ -62,6 +67,7 @@ class _DefaultState extends State<Default> {
             Home(),
             Devices(),
             Profile(),
+            Settings(),
           ],
         ),
         bottomNavigationBar: Container(
