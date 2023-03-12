@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import '../screens/planets.dart';
 import '../screens/devices.dart';
 import '../screens/history.dart';
 import '../screens/home.dart';
@@ -27,8 +28,12 @@ class _DefaultState extends State<Default> {
 
   static List<ListItem> pages = [
     ListItem(
-      label: 'home',
+      label: 'test',
       icon: Icons.home_filled,
+    ),
+    ListItem(
+      label: 'home',
+      icon: Icons.timelapse_sharp,
     ),
     ListItem(
       label: 'history',
@@ -69,6 +74,7 @@ class _DefaultState extends State<Default> {
         body: IndexedStack(
           index: selectedIndex,
           children: const [
+            Planets(),
             Home(),
             History(),
             Devices(),
