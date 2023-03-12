@@ -12,7 +12,7 @@ class Devices extends StatelessWidget {
       return Scaffold(
         backgroundColor: Colors.transparent,
         body: ListView.separated(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(top: 30),
             itemBuilder: (context, index) {
               return Center(
                 child: SquareBox(
@@ -21,7 +21,7 @@ class Devices extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) {
-              return const SizedBox(width: 100, height: 50);
+              return const SizedBox(width: 100, height: 40);
             },
             itemCount: state.count),
         floatingActionButton: FloatingActionButton(

@@ -17,11 +17,10 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-
     List<SettingsItemGroup> items = [
       SettingsItemGroup(title: "Account", items: [
         SettingsItem(title: 'Password and security', icon: Icons.password),
+        SettingsItem(title: 'Logout', icon: Icons.logout),
       ]),
       SettingsItemGroup(title: "Preferences", items: [
         SettingsItem(title: 'Dark mode', icon: Icons.dark_mode),
@@ -39,9 +38,13 @@ class Settings extends StatelessWidget {
             // Build a list of ListTile widgets from the SettingsItem objects in the group
             List<Widget> listTiles = itemGroup.items.map((SettingsItem item) {
               return ListTile(
-                contentPadding: const EdgeInsets.all(0),
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                horizontalTitleGap: 0,
+                contentPadding: const EdgeInsets.only(left: 10),
                 leading: Icon(item.icon),
                 title: Text(item.title),
+                onTap: () {},
               );
             }).toList();
 
@@ -52,9 +55,10 @@ class Settings extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(itemGroup.title),
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    child: Text(itemGroup.title,
+                        style: Theme.of(context).textTheme.headlineSmall),
                   ),
                   ...listTiles // Spread the list of ListTile widgets into the column
                 ],

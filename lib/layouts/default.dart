@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../screens/devices.dart';
+import '../screens/history.dart';
 import '../screens/home.dart';
 import '../screens/profile.dart';
 import '../screens/settings.dart';
@@ -30,6 +31,10 @@ class _DefaultState extends State<Default> {
       icon: Icons.home_filled,
     ),
     ListItem(
+      label: 'history',
+      icon: Icons.bar_chart,
+    ),
+    ListItem(
       label: 'devices',
       icon: Icons.dashboard_customize_sharp,
     ),
@@ -52,7 +57,7 @@ class _DefaultState extends State<Default> {
           toolbarHeight: 60,
           backgroundColor: const Color(0xFF5A5A5A),
           title: const Text(
-            'TIME BOX',
+            'TIME:BOX',
             style: TextStyle(fontWeight: FontWeight.w100, fontSize: 30),
           ),
           shape: const RoundedRectangleBorder(
@@ -65,6 +70,7 @@ class _DefaultState extends State<Default> {
           index: selectedIndex,
           children: const [
             Home(),
+            History(),
             Devices(),
             Profile(),
             Settings(),
@@ -81,6 +87,9 @@ class _DefaultState extends State<Default> {
                 child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: GNav(
+                        duration: Duration.zero,
+                        color: Colors.black,
+                        activeColor: Colors.black,
                         tabBackgroundColor: Colors.white,
                         selectedIndex: selectedIndex,
                         tabBorderRadius: 5,

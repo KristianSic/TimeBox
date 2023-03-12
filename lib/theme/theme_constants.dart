@@ -6,7 +6,7 @@ ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     textTheme: const TextTheme(
         headlineLarge:
-            TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+            TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
     primaryColor: primary,
     floatingActionButtonTheme:
         const FloatingActionButtonThemeData(backgroundColor: secondary),
@@ -26,5 +26,9 @@ ThemeData lightTheme = ThemeData(
               vertical: 20,
             )))));
 
-ThemeData darkTheme =
-    ThemeData(brightness: Brightness.dark, primaryColor: primary);
+ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: primary,
+  floatingActionButtonTheme:
+      const FloatingActionButtonThemeData(backgroundColor: Color(0xffc4c4c4)),
+);
