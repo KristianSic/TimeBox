@@ -25,9 +25,11 @@ class Home extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SquareBox(
-                    box: state.timeboxes[0],
-                  ),
+                  state.timeboxes.isNotEmpty
+                      ? SquareBox(
+                          box: state.timeboxes[0],
+                        )
+                      : const Text("empty"),
                   Container(
                       padding: const EdgeInsets.only(right: 10),
                       child: const Countdown(startTime: 20))

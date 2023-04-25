@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import '../screens/planets.dart';
 import '../screens/devices.dart';
 import '../screens/history.dart';
 import '../screens/home.dart';
-import '../screens/profile.dart';
 import '../screens/settings.dart';
 
 class Default extends StatefulWidget {
@@ -32,10 +32,6 @@ class _DefaultState extends State<Default> {
       icon: Icons.home_filled,
     ),
     ListItem(
-      label: 'home',
-      icon: Icons.timelapse_sharp,
-    ),
-    ListItem(
       label: 'history',
       icon: Icons.bar_chart,
     ),
@@ -44,13 +40,16 @@ class _DefaultState extends State<Default> {
       icon: Icons.dashboard_customize_sharp,
     ),
     ListItem(
-      label: 'profile',
-      icon: Icons.person,
-    ),
-    ListItem(
       label: 'settings',
       icon: Icons.settings,
     ),
+  ];
+
+  var routes = const [
+    Planets(),
+    History(),
+    Devices(),
+    Settings(),
   ];
 
   @override
@@ -71,16 +70,9 @@ class _DefaultState extends State<Default> {
             ),
           ),
         ),
-        body: IndexedStack(
+        body: LazyLoadIndexedStack(
           index: selectedIndex,
-          children: const [
-            Planets(),
-            Home(),
-            History(),
-            Devices(),
-            Profile(),
-            Settings(),
-          ],
+          children: routes,
         ),
         bottomNavigationBar: Container(
             margin:

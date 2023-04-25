@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:timebox/code.services/api.dart';
 import 'package:timebox/theme/theme_constants.dart';
 
-import 'layouts/default.dart';
 import 'providers/user_provider.dart';
 import 'providers/theme_provider.dart';
 import 'providers/box_provider.dart';
 import 'screens/devices.dart';
-import 'screens/profile.dart';
+import 'screens/login.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
+        Provider(create: (ref) => API()),
         ChangeNotifierProvider(create: (_) => ThemeState()),
         ChangeNotifierProvider(create: (_) => ProfileState()),
         ChangeNotifierProvider(create: (_) => TimeBoxState()),
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget {
       theme: darkTheme,
       darkTheme: darkTheme,
       themeMode: context.watch<ThemeState>().themeMode,
-      initialRoute: '/',
-      home: const Default(),
+      initialRoute: '/login',
+      //home: const Default(),
       routes: {
-        '/profile': (context) => const Profile(),
+        '/login': (context) => const Login(),
         '/devices': (context) => const Devices(),
       },
     );

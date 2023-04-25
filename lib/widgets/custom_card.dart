@@ -33,7 +33,7 @@ class CustomCard extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
                 Text(
-                  "Time Box",
+                  "TimeBox",
                   style: TextStyle(
                       color: primaryTextColor,
                       fontWeight: FontWeight.w400,

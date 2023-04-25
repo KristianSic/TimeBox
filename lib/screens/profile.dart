@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:timebox/providers/theme_provider.dart';
 import '../providers/user_provider.dart';
 
 class Profile extends StatefulWidget {
@@ -53,7 +52,7 @@ class _ProfileState extends State<Profile> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  context.watch<ProfileState>().name,
+                  context.watch<ProfileState>().username,
                   style: const TextStyle(fontSize: 30),
                 ),
               ),
@@ -89,9 +88,9 @@ class _ProfileState extends State<Profile> {
   }
 
   void saveInput(BuildContext context) {
-    String name =
-        usernameController.text.isEmpty ? 'Kristian' : usernameController.text;
-    context.read<ProfileState>().setName(name);
+    String username =
+        usernameController.text.isEmpty ? '' : usernameController.text;
+    context.read<ProfileState>().setUsername(username);
     usernameController.text = '';
   }
 }
@@ -101,7 +100,7 @@ class User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(context.watch<ProfileState>().name,
+    return Text(context.watch<ProfileState>().username,
         key: const Key('counterState'),
         style: Theme.of(context).textTheme.headlineMedium);
   }

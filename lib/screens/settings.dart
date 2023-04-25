@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:timebox/screens/login.dart';
+import 'package:timebox/screens/profile.dart';
 
 class SettingsItem {
+  String id;
   String title;
   IconData icon;
-  SettingsItem({required this.title, required this.icon});
+  SettingsItem({required this.id, required this.title, required this.icon});
 }
 
 class SettingsItemGroup {
@@ -19,11 +22,15 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     List<SettingsItemGroup> items = [
       SettingsItemGroup(title: "Account", items: [
-        SettingsItem(title: 'Password and security', icon: Icons.password),
-        SettingsItem(title: 'Logout', icon: Icons.logout),
+        SettingsItem(
+            id: 'password',
+            title: 'Password and security',
+            icon: Icons.password),
+        SettingsItem(id: 'profile', title: 'Profile', icon: Icons.person),
+        SettingsItem(id: 'logout', title: 'Logout', icon: Icons.logout),
       ]),
       SettingsItemGroup(title: "Preferences", items: [
-        SettingsItem(title: 'Dark mode', icon: Icons.dark_mode),
+        SettingsItem(id: 'theme', title: 'Dark mode', icon: Icons.dark_mode),
       ]),
     ];
 
@@ -44,7 +51,25 @@ class Settings extends StatelessWidget {
                 contentPadding: const EdgeInsets.only(left: 10),
                 leading: Icon(item.icon),
                 title: Text(item.title),
-                onTap: () {},
+                onTap: () {
+                  String id = item.id;
+                  switch (id) {
+                    case 'logout':
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Login()));
+                      break;
+                    case 'profile':
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Profile()),
+                      );
+                      break;
+                    default:
+                  }
+                },
               );
             }).toList();
 

@@ -18,7 +18,7 @@ class CountdownState extends State<Countdown> {
   void initState() {
     super.initState();
     _currentTime = widget.startTime;
-    startTimer();
+    //startTimer();
   }
 
   void startTimer() {
